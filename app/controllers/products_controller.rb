@@ -11,14 +11,17 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(
-    name: params[:name],
-    price: params[:price],
-    description: params[:description],
-    image_url: params[:image_url],
-    inventory: params[:inventory]
-  )
-  @product.save
-    render template: "products/show"
+      name: params[:name],
+      price: params[:price],
+      description: params[:description],
+      image_url: params[:image_url],
+      inventory: params[:inventory]
+    )
+    if @product.save
+      render template: "products/show"
+    else
+      render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -28,8 +31,10 @@ class ProductsController < ApplicationController
     @product.description = params[:description] || @product.description
     @product.image_url = params[:image_url] || @product.image_url
     @product.inventory = params[:inventory] || @product.inventory
-    @product.save
-    render template: "products/show"
+    if @product.save
+      render template: "products/show"
+    else
+      render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
   end
 
   def destroy

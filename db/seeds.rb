@@ -14,3 +14,13 @@ product = Product.new(
   image_url: "https://images.thdstatic.com/productImages/5fec94d4-a763-4a86-b020-88b160da45e2/svn/light-grey-area-rugs-djyc-g-b03047087-31_600.jpg"
 )
 product.save
+
+products = Product.all
+
+products.each do |product|
+  Image.create!(
+    url: product.image_url,
+    product_id: product.id
+  )
+end
+

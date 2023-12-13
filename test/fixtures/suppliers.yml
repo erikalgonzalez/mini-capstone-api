@@ -2,12 +2,10 @@
 
 one:
   name: MyString
-  price: 1
-  description: My Strings
-  image_url: MyString
+  phone_number: MyString
+  email: MyString
 
 two:
   name: MyString
-  price: 1
-  description: My Strings
-  image_url: MyString
+  phone_number: MyString
+  email: MyString

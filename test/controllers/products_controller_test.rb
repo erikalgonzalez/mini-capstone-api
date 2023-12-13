@@ -14,12 +14,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
   
     data = JSON.parse(response.body)
-    assert_equal ["id", "name", "price", "image_url", "description","is_discounted?", "tax", "total", "inventory", "created_at", "updated_at"], data.keys
+    assert_equal ["id", "name", "price", "image_url", "description","is_discounted?", "tax", "total", "inventory", "supplier", "images", "created_at", "updated_at"], data.keys
   end
 
   test "create" do
     assert_difference "Product.count", 1 do
-      post "/products.json", params: { name: "test", price: 10, image_url: "test.jpg", description: "test description" }
+      post "/products.json", params: { name: "test", price: 10, image_url: "test.jpg", description: "test description", supplier_id: Supplier.first.id }
       assert_response 200
     end
 

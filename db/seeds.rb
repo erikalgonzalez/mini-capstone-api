@@ -23,4 +23,3 @@ products.each do |product|
     product_id: product.id
   )
 end
-

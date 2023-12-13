@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
       render template: "products/show"
     else
       render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def destroy

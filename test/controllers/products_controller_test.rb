@@ -31,7 +31,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "update" do
     product = Product.first
-    p product
+    # p product
     patch "/products/#{product.id}.json", params: { name: "Updated name" }
     assert_response 200
 

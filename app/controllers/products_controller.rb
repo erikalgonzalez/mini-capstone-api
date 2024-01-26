@@ -20,6 +20,11 @@ class ProductsController < ApplicationController
       inventory: params[:inventory]
     )
     if @product.save
+      params[:images].each do |image|
+        Image.create(
+          url: "https://m.media-amazon.com/images/I/81-XgOt+CXL.jpg", product_id: @product.id
+        )
+      end
       render template: "products/show"
     else
       render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
